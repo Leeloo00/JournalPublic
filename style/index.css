@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(254,224,179);
+    position: fixed;
+}
+.container{
+    margin: auto;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container-card{
+    width: 40%;
+    background-color:rgb(210,196,198);
+    border: 22px, solid, rgb(74, 0, 59);
+    margin: 20px;
+}
+
+h1{
+    color:rgb(74, 0, 59); 
+}
+
+img{
+    display: flex;
+    align-items: center;
+}
+
+p{
+    color:rgb(74, 0, 59); 
+}
+
+
+
+
+@media screen and (max-width: 840px){
+    .container-card{
+        width: 90%;
+        background-color:rgb(210,196,198);
+        border: 2px, solid, rgb(74, 0, 59);
+        margin: 20px;
+    }
+}
