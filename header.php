@@ -15,12 +15,12 @@
 </head>
 <body>
     <header>
-        <h1 id="nav">Journal d'une Sauvage</h1>
     </header>
     <nav>
+        <h1 id="nav">Journal d'une Sauvage</h1>
         <ul id="menu">
             <li>
-                <a href="#">Acceuil</a>
+                <a href="index.php">Acceuil</a>
             </li>
             <li>A propos</li>
             <li>Contact</li>
