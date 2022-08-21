@@ -1,0 +1,41 @@
+.container{
+    margin: auto;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.contain-all{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img{
+    display: flex; 
+    justify-content: center;
+}
+
+.section{
+    margin-top: 15px;
+}
+
+p{
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+input{
+    height: 40px;
+}
+
+textarea{
+    margin-top: 10px;
+}

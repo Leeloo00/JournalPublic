@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'ibm_plex_monoregular';
+    src: url('ibm/ibm-plex-mono.regular-webfont.woff2') format('woff2'),
+         url('ibm/ibm-plex-mono.regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.container-commande{
+    margin: auto;
+    margin-top: 200px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    padding: 10px 5px 10px 5px;
+    background-color: rgb(123, 237, 122);
+    border: 1.5px solid rgb(38, 46, 109);
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'ibm_plex_monoregular';
+    color: rgb(38, 46, 109);
+}
+
+#publication{
+    width: 30%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+input{
+    height: 40px;
+}
+
+
+@media screen and (max-width: 1040px){
+
+    #publication{
+        width: 80%;
+    }
+    .container-commande{
+        width: 80%;
+    }
+}

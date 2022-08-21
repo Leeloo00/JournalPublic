@@ -3,32 +3,40 @@ body{
 }
 .container{
     margin: auto;
-    margin-top: 120px;
+    margin-top: 160px;
     width: 50%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    /* background-color: aqua; */
+    justify-content: center;
 }
 
 .container-card{
     width: 40%;
     background-color:rgb(210,196,198);
-    border: 22px, solid, rgb(74, 0, 59);
+    border: 1px solid rgb(74, 0, 59);
     margin: 10px;
 }
 
 h1{
     color:rgb(74, 0, 59); 
+    margin-left: 10px;
 }
 
-img{
+.img{ 
     display: flex;
-    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-content{
+    font-size: 14px;
+    padding: 10px;
 }
 
 p{
     color:rgb(74, 0, 59); 
+    font-family: 'Courier Prime', arial;
 }
 
 

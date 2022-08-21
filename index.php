@@ -18,32 +18,45 @@ require "header.php";
     <div class="container">
     <div class="container-card">
             <h1>Titre</h1>
-            <img src="img/dessin.jpg" width=60% alt="">
+            <div class="img">
+                <img src="img/dessin.jpg" width=60% alt="">
+            </div>
             <div class="text-content">
                 <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
             </div>
         </div>
+
         <div class="container-card">
             <h1>Titre</h1>
-            <img src="img/dessin.jpg" width=60% alt="">
+            <div class="img">
+                <img src="img/dessin.jpg" width=60% alt="">
+            </div>
             <div class="text-content">
                 <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
             </div>
         </div>
+
         <div class="container-card">
             <h1>Titre</h1>
-            <img src="img/dessin.jpg" width=60% alt="">
+            <div class="img">
+                <img src="img/dessin.jpg" width=60% alt="">
+            </div>
             <div class="text-content">
                 <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
             </div>
         </div>
+
         <div class="container-card">
             <h1>Titre</h1>
-            <img src="img/dessin.jpg" width=60% alt="">
+            <div class="img">
+                <img src="img/dessin.jpg" width=60% alt="">
+            </div>
             <div class="text-content">
                 <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
             </div>
         </div>
+        
+     
     </div>
   
 </body>
