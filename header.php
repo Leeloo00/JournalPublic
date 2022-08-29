@@ -24,7 +24,7 @@ if(!isset($_SESSION))
     </header>
     <nav>
         <h1 id="nav">
-            <a href="index.php">Journal d'une Sauvage</a>        
+            <a href="index.php">Journal</a>        
         </h1>
         <ul id="menu">
             <li>

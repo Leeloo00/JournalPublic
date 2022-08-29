@@ -1,0 +1,11 @@
+.container{
+    width: 50%;
+    margin: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+    background-color: darkolivegreen;
+}
+
+p{
+    text-align: justify;
+}

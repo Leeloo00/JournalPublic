@@ -1,6 +1,7 @@
 <?php
+session_start();
 require "header.php";
-
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
 ?>
 
 
@@ -16,47 +17,40 @@ require "header.php";
 </head>
 <body>
     <div class="container">
-    <div class="container-card">
-            <h1>Titre</h1>
-            <div class="img">
-                <img src="img/dessin.jpg" width=60% alt="">
-            </div>
-            <div class="text-content">
-                <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
-            </div>
-        </div>
-
+        <?php
+        $get_article = $bdd->query('SELECT * FROM publication');
+        while($article = $get_article->fetch()){
+        ?>
         <div class="container-card">
-            <h1>Titre</h1>
+            <h1><?= $article['titre']; ?></h1>
             <div class="img">
                 <img src="img/dessin.jpg" width=60% alt="">
             </div>
             <div class="text-content">
-                <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
+                <p><?=  substr($article['content'], 0, 230). "..." ; ?>
+            <a href="article.php?id=<?= $article['id_publication']; ?>">>>> Lire la suite</a>
+            </p>
             </div>
+                <?php
+                    if(isset($_SESSION['role']) && !empty($_SESSION['role'])){
+                    if(($_SESSION['role']) === 'admin'){
+                ?>
+                <button>Modifier</button>
+                <button>Supprimer</button>
+                <?php
+                    }elseif(($_SESSION['role']) === 'user'){
+                ?>
+                <p>Nada</p>
+                <?php
+                    }
+                }   
+                ?>
         </div>
-
-        <div class="container-card">
-            <h1>Titre</h1>
-            <div class="img">
-                <img src="img/dessin.jpg" width=60% alt="">
-            </div>
-            <div class="text-content">
-                <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
-            </div>
-        </div>
-
-        <div class="container-card">
-            <h1>Titre</h1>
-            <div class="img">
-                <img src="img/dessin.jpg" width=60% alt="">
-            </div>
-            <div class="text-content">
-                <p>Lorem ipsum dolor sit amet. Quo nisi rerum ex doloribus saepe cum laborum commodi ut reiciendis enim aut dolores laboriosam est mollitia voluptas. Aut velit necessitatibus hic  culpa voluptatem ut voluptatum accusamus est provident numquam.</p>
-            </div>
-        </div>
-        
-     
+            <?php
+            }
+            // var_dump($_SESSION['role']);
+            ?> 
+       
     </div>
   
 </body>

@@ -1,0 +1,25 @@
+.container{
+    width: 30%;
+    margin: auto;
+    margin-top: 250px;
+}
+
+textarea,input {
+    width: 80%;  
+    margin: auto;
+}
+
+input{
+    height: 40px;
+}
+
+
+@media screen and (max-width: 1040px){
+    .container{
+        width: 80%;
+    }
+
+    textarea,input {
+        width: 100%;  
+    }
+}

@@ -8,6 +8,7 @@ if($_SESSION['role'] === 'null'){
 
     header('Location: index.php');
     // exit();
+}
 
 if(isset($_POST['envoyer'])){
     $titre = htmlspecialchars($_POST['titre']);
@@ -25,7 +26,6 @@ if(isset($_POST['envoyer'])){
 }
 
 
-}
 ?>
 
 
@@ -49,22 +49,8 @@ if(isset($_POST['envoyer'])){
     <?php
     if(isset($_POST['publication'])){
 
-        header('Location: index.php');
+        header('Location: publication.php');
         ?>
-        <!-- <form action="" method='POST' id=publication>
-            <input type="text" name='titre' placeholder="Titre"><br><br>
-            <textarea name="content" id="" cols="30" rows="10" placeholder="Entre votre texte ici ..."></textarea><br><br>
-            <button name='publier'>Publier</button><br><br>
-            <?php
-                if(isset($erreur)){
-                    echo '<font style="color:red">'.$erreur.'</font>';
-                }
-                
-                if(isset($message)){
-                    echo '<font style="color:blue">'.$message.'</font>';
-                }
-                ?>
-        </form> -->
 
         <?php
     }elseif (isset($_POST['users-view'])) {
