@@ -28,7 +28,7 @@ if(!isset($_SESSION))
         </h1>
         <ul id="menu">
             <li>
-                <a href="index.php">Acceuil</a>
+                <a href="index.php">Accueil</a>
             </li>
             <li>A propos</li>
             <li>

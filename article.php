@@ -43,9 +43,21 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         </p>  
         <h1><?= $data_article['titre'];?></h1>
         <div class="img">
-            <img src="img/dessin.jpg" width="50%" alt="">
+            <img src="img/dessin.jpg" alt="">
         </div>       
-        <p><?= $data_article['content'];?></p>       
+        <p><?= $data_article['content'];?></p>      
     </div>
+    <div class="container-comment">
+        <form action="" method="POST">
+            <p>Laisser un commentaire :</p>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Votre commentaire ici..."></textarea>
+            <div class="button">
+                <input type="submit" id= "button">
+            </div>           
+        </form>
+        <div class="comments">
+            
+        </div>
+    </div> 
 </body>
 </html>
