@@ -18,7 +18,7 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
 <body>
     <div class="container">
         <?php
-        $get_article = $bdd->query('SELECT * FROM publication');
+        $get_article = $bdd->query('SELECT * FROM publication ORDER BY id_publication DESC');
         while($article = $get_article->fetch()){
         ?>
         <div class="container-card">
@@ -35,8 +35,12 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
                     if(isset($_SESSION['role']) && !empty($_SESSION['role'])){
                     if(($_SESSION['role']) === 'admin'){
                 ?>
-                <button>Modifier</button>
-                <button>Supprimer</button>
+                <button>
+                    <a href="modifier.php?id=<?=$article['id_publication']; ?>">Modifier</a>
+                </button>
+                <button>
+                    <a href="supprimer.php?id=<?=$article['id_publication']; ?>">Supprimer</a>
+                </button>
                 <?php
                     }elseif(($_SESSION['role']) === 'user'){
                 ?>

@@ -1,11 +1,22 @@
 .container{
     width: 50%;
     margin: auto;
+    margin-top: 200px;
     padding-left: 80px;
     padding-right: 80px;
     background-color: darkolivegreen;
 }
+h1{
+    padding-top: 20px;
+}
 
 p{
     text-align: justify;
+}
+
+.img{ 
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

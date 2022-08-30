@@ -4,7 +4,7 @@ body{
 .container{
     margin: auto;
     margin-top: 160px;
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -42,7 +42,7 @@ p{
 
 
 
-@media screen and (max-width: 840px){
+@media screen and (max-width: 1040px){
 
     .container{
         width: 100vw;
