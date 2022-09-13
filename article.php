@@ -13,10 +13,31 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
     if($check_article){
         var_dump($_GET['id']);
+        var_dump($_SESSION['id_users']);
 
         $data_article = $get_article->fetch();
         $titre = $data_article['titre'];
         $content = $data_article['content'];
+    }
+}
+
+               
+if(isset($_POST['valider'])){
+    if(isset($_SESSION['role']) && !empty($_SESSION['role'])){
+        $comment = htmlspecialchars($_POST['comment']);
+
+        if(!empty($_POST['comment'])){
+            
+            $query = $bdd->prepare('INSERT INTO comments(id_publication,id_users, comment, created_at) VALUES(?,?,?, NOW())');
+            $query->execute([$_GET['id'], $_SESSION['id_users'], $comment]);
+
+            $message = 'Votre commentaire à bien été publié. Merci pour votre participation';
+
+        }else{
+            $erreur = 'Il n\'y a pas de commentaire à envoyer';
+        }
+    }else{
+        $message = "Inscrivez-vous ou Connectez-vous <a href = \"inscription-connexion.php\">ici</a> pour laisser un commentaire ";
     }
 }
 
@@ -31,9 +52,19 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/article.css">
-    <title>Document</title>
+    <title><?= $data_article['titre'];?></title>
 </head>
 <body>
+            <div class="comment-result">                   
+                <?php
+                if(isset($erreur)){
+                    echo '<font color="red"> '.$erreur.'</font>';     
+                }
+                if(isset($message)){
+                    echo '<font color="blue"> '.$message.'</font>';     
+                }
+                ?>
+            </div>
     <div class="container">
         <p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -41,23 +72,43 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             </svg>
             <?= $data_article['date'];?>
         </p>  
-        <h1><?= $data_article['titre'];?></h1>
+        <h1 id='titre'><?= $data_article['titre'];?></h1>
         <div class="img">
-            <img src="img/dessin.jpg" alt="">
+            <img src="<?= $data_article['photo'];?>" alt="">
         </div>       
         <p><?= $data_article['content'];?></p>      
     </div>
+
     <div class="container-comment">
-        <form action="" method="POST">
+        <form action="" method="POST" id="comment">
+     <!-- ?id=<?= $_GET['id']; ?>&task=write -->
             <p>Laisser un commentaire :</p>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Votre commentaire ici..."></textarea>
+            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Votre commentaire ici..."></textarea>
             <div class="button">
-                <input type="submit" id= "button">
+                <input type="submit" name="valider" id= "button">
             </div>           
         </form>
-        <div class="comments">
-            
-        </div>
+
     </div> 
+   <?php
+   $get_comment = $bdd->prepare('SELECT * FROM comments WHERE id_publication = ? ORDER BY id_comment DESC');
+   $get_comment->execute([$_GET['id']]);
+   while($comment = $get_comment->fetch()){
+    ?>
+   <div class="messages">
+
+            <div class="container-message">
+                <div class="date"><?= $comment['created_at']; ?></div>
+                <div class="author">-</div>
+                <div class="content"><?= $comment['comment']; ?></div>
+            </div>
+    </div>
+        <?php
+        }
+        var_dump($_GET['id']);
+            ?> 
+                
+
+        <script src="script/commentaires.js"></script>
 </body>
 </html>

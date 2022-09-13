@@ -33,7 +33,7 @@ if(isset($_POST['envoyer'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/contact.css">
-    <title>Document</title>
+    <title>Page contact</title>
 </head>
 <body>
     <div class="container">
@@ -41,7 +41,7 @@ if(isset($_POST['envoyer'])){
             <div class="section">
                 <p>Pour m'écrire ou vous abonner c'est ici :</p>
                 <div class="img">
-                    <a href="https://www.instagram.com/lilou_achab/?hl=fr">
+                    <a href="https://www.instagram.com/lilou_achab/?hl=fr" target="_blank">
                         <img src="img/insta-gd.png" alt="">
                     </a>
                 </div>

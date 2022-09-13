@@ -1,11 +1,18 @@
+.comment-result{
+    width: 50%;
+    margin: auto;
+    margin-top: 150px;
+}
+
 .container{
     width: 50%;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 10px;
     padding: 20px 80px 20px 80px;
     border : 1.5px solid black;
 }
-h1{
+
+#titre{
     padding-top: 40px;
 }
 
@@ -51,6 +58,12 @@ textarea{
     margin-top: 10px;
 }
 
+.container-message{
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 1040px){
     img{
         width: 80%;
@@ -64,5 +77,12 @@ textarea{
         width:  90%;
         padding: 10px 40px 10px 40px;
         font-size: 15px;
+    }
+
+    .container-comment{
+        width: 90%;
+    }
+    .container-message{
+        width: 90%;
     }
 }
