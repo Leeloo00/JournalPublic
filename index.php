@@ -2,6 +2,21 @@
 session_start();
 require "header.php";
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
+
+$articleparpage = 4;
+$articlestotalsreq = $bdd->query('SELECT id_publication FROM publication');
+$articlestotal = $articlestotalsreq->rowCount();
+$pagesTotales = ceil($articlestotal/$articleparpage);
+
+if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $articlestotal){
+    $_GET['page'] = intval($_GET['page']);
+    $pagecourante = $_GET['page'];
+}else{
+    $pagecourante = 1;
+}
+echo $pagecourante;
+$depart = ($pagecourante-1)*$articleparpage;
+echo $depart;
 ?>
 
 
@@ -18,7 +33,7 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
 <body>
     <div class="container">
         <?php
-        $get_article = $bdd->query('SELECT * FROM publication ORDER BY id_publication DESC');
+        $get_article = $bdd->query('SELECT * FROM publication ORDER BY id_publication DESC LIMIT '.$depart.','.$articleparpage);
         while($article = $get_article->fetch()){
         ?>
         <div class="container-card">
@@ -53,9 +68,17 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
             <?php
             }
             // var_dump($_SESSION['role']);
-            ?> 
-       
+            ?>       
     </div>
+        <?php
+            for($i=1;$i<=$pagesTotales;$i++) {
+                if($i == $pagecourante) {
+                    echo $i.' ';
+                } else {
+                    echo '<a href="index.php?page='.$i.'">'.$i.'</a> ';
+                }
+            }
+        ?>
   
 </body>
 </html>
