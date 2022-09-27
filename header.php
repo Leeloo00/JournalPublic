@@ -50,13 +50,13 @@ if(!isset($_SESSION))
                         Salut <?= ucfirst($_SESSION['prenom']); ?> ! / <a href="deconnexion.php">Me déconnecter</a>
                     </li>
                 <?php
+                }
                 }else{
                 ?>                  
                     <li id="suscribe">
                         <a href="inscription-connexion.php">Inscription/Connexion</a>
                     </li>
                 <?php
-                }
                 }
                 ?>
         </ul>
