@@ -42,6 +42,9 @@ if(!isset($_SESSION))
                     <li>
                         <a href="admin.php">Administration</a>
                     </li>
+                    <li>
+                        <a href="messagerie.php">Messagerie</a>
+                    </li>
                <?php
                 }
                     if ($_SESSION['role'] === "user" || $_SESSION['role'] === "admin"){

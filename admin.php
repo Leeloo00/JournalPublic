@@ -55,9 +55,9 @@ if(isset($_POST['envoyer'])){
 
         <?php
     }elseif (isset($_POST['users-view'])) {
-        $get_users = $bdd->query('SELECT * FROM comments INNER JOIN users ON comments.id_comment = users.id_users');
+        $get_users = $bdd->query('SELECT comment, prenom FROM users INNER JOIN comments ON users.id_users =comments.id_users');
         while($user = $get_users->fetch()){
-            var_dump($get_users);
+            var_dump($user);
         ?>
         <p><?= $user['prenom']; ?></p>
         <p><?= $user['comment']; ?></p>

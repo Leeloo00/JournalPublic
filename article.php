@@ -81,8 +81,6 @@ if(isset($_POST['valider'])){
 
     <div class="container-comment">
         <form action="" method="POST" id="comment">
-
- 
             <p>Laisser un commentaire :</p>
             <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Votre commentaire ici..."></textarea>
             <!-- <input type="hidden" name="author" id="author" value="<?=$_SESSION['id_users']; ?>"> -->
@@ -90,18 +88,20 @@ if(isset($_POST['valider'])){
                 <input type="submit" name="valider" id= "button">
             </div>           
         </form>
-
     </div> 
    <?php
-   $get_comment = $bdd->prepare('SELECT * FROM comments WHERE id_publication = ? ORDER BY id_comment DESC');
+   $get_comment = $bdd->prepare('SELECT comment, created_at, prenom FROM comments INNER JOIN users ON comments.id_users =users.id_users WHERE id_publication = ? ORDER BY id_comment DESC');
    $get_comment->execute([$_GET['id']]);
    while($comment = $get_comment->fetch()){
     ?>
    <div class="messages">
-
             <div class="container-message">
-                <div class="date"><?= $comment['created_at']; ?></div>
-                <div class="author">-</div>
+                <ul>
+                    <li style="list-style-type: '-'; ">
+                        <div class="date"><?= date("d/m/Y à H:i", strtotime($comment['created_at'])); ?></div>
+                    </li>
+                </ul>
+                <div class="author" style="text-decoration: underline"><?= $comment['prenom']; ?></div>
                 <div class="content"><?= $comment['comment']; ?></div>
             </div>
     </div>
