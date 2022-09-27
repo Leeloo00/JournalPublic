@@ -48,7 +48,7 @@ echo $depart;
             </div>
                 <?php
                     if(isset($_SESSION['role']) && !empty($_SESSION['role'])){
-                    if(($_SESSION['role']) === 'admin'){
+                        if(($_SESSION['role']) === 'admin'){
                 ?>
                 <button>
                     <a href="modifier.php?id=<?=$article['id_publication']; ?>">Modifier</a>
@@ -59,7 +59,7 @@ echo $depart;
                 <?php
                     }elseif(($_SESSION['role']) === 'user'){
                 ?>
-                <p>Nada</p>
+                
                 <?php
                     }
                 }   
@@ -70,15 +70,18 @@ echo $depart;
             // var_dump($_SESSION['role']);
             ?>       
     </div>
+    <div class="pagination">
         <?php
             for($i=1;$i<=$pagesTotales;$i++) {
                 if($i == $pagecourante) {
                     echo $i.' ';
                 } else {
-                    echo '<a href="index.php?page='.$i.'">'.$i.'</a> ';
+                    echo '<a id=pagination" href="index.php?page='.$i.'">'.$i.'</a> ';
                 }
             }
         ?>
+
+    </div>
   
 </body>
 </html>

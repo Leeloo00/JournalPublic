@@ -21,7 +21,7 @@ body{
 
 nav{
     display : flex;
-    background-color:rgba(199, 3, 179, 0.079);
+    background-color:rgba(199, 3, 179, 0);
     justify-content: center;
     /* position: fixed; */  
     position: fixed;
@@ -39,8 +39,8 @@ li{
     list-style-type: none;
     margin-right: 20px;
     margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 2px;
     font-size: 20px;
 }
 
@@ -59,8 +59,8 @@ a:hover{
     width: 100%;
     font-size: 60px;
     font-weight: bold;
-    background-color:  rgba(199, 3, 179, 0.064);
-    border-bottom: 3px solid rgb(54, 217, 54);
+    background-color:  rgba(199, 3, 179, 0);
+    border-bottom: 3px solid rgba(54, 217, 54, 0.007);
     display: flex;
     justify-content: center;
 }
@@ -69,7 +69,7 @@ a:hover{
     color: rgb(54, 217, 54);
 }
 
-.inscitpion{
+.inscritpion{
     background-color:  rgba(114, 199, 3, 0);
     width: 100%;
     padding-right: 10px;
@@ -83,7 +83,7 @@ a:hover{
     font-size: 16px;
     text-decoration: underline;
     width: 100%;
-    background-color:rgba(127, 3, 199, 0.933) ;
+    background-color:rgba(10, 199, 3, 0.933) ;
     padding-right: 20px;
 }
 
@@ -136,9 +136,16 @@ a:hover{
         flex-direction: column;
         text-align: center;
         justify-content: center;
+        width: 100%;
         padding-top: 50px;
         padding-bottom: 100px;
         background-color: rgb(199, 3, 180) ;
+    }
+
+    .inscritpion{
+        display: flex;
+        justify-content: center;
+
     }
 
     #log{
@@ -147,6 +154,7 @@ a:hover{
 
     #suscribe{
         display: flex;
+        justify-content: center;
     }
 }
 

@@ -35,14 +35,16 @@ function postMessages(){
         // $author = $_POST['id_user'];
         $comment = $_POST['comment'];
 
-        $query = $bdd->prepare('INSERT INTO comments SET id_publication= :id_publication, id_users = :id_users,  comment = :comment, created_at = NOW()');
+        $query = $bdd->prepare('INSERT INTO comments SET id_publication= :id_publication,   id_users = :id_users, comment = :comment, created_at = NOW()');
         $query->execute([
             "id_publication"=>$_GET['id'],
-            "id_users"=>$_SESSION['id_users'], 
+            "id_users"=>$_SESSION['id_users'],
             "comment"=>$comment
         ]);
 
         echo json_encode(["status"=>"success"]);
+
+        // header('Location: article.php');
 }
 
 ?>

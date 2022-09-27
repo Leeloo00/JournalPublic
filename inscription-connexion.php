@@ -95,7 +95,7 @@ if(isset($_POST['connexion'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/inscription-connexion.css">
-    <title>Document</title>
+    <title>Inscription/Connexion</title>
 </head>
 <body>
     <div class="container">
@@ -118,7 +118,8 @@ if(isset($_POST['connexion'])){
                 <input type="password" placeholder="Mot de passe" name="mdp">
                 <br><br>
                 <input type="submit" name="connexion" value="Se connecter"> 
-            </form>
+            </form><br><br>
+                <p>Mot de passe oublié, cliquez<a href="forgotmdp.php"> ici</a></p>
             <br>
         <?php
         if(isset($erreur)){

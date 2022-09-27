@@ -1,5 +1,6 @@
 <?php
 session_start();
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
 require_once "header.php";
 
 var_dump($_SESSION['role']);
@@ -54,11 +55,16 @@ if(isset($_POST['envoyer'])){
 
         <?php
     }elseif (isset($_POST['users-view'])) {
+        $get_users = $bdd->query('SELECT * FROM comments INNER JOIN users ON comments.id_comment = users.id_users');
+        while($user = $get_users->fetch()){
+            var_dump($get_users);
         ?>
-        <p>Utilisateurs</p>
+        <p><?= $user['prenom']; ?></p>
+        <p><?= $user['comment']; ?></p>
         <?php
-    }
-    ?>
+        }
+        }
+        ?>
     
 
 

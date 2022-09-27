@@ -27,14 +27,21 @@ input{
 }
 
 .container-form{
+    margin: auto;
     width: 80%;
-    padding-left: 12%;
+    padding-left: 8%;
+    padding-right: 5%;
     padding-top: 30px;
     background-color: rgb(199, 3, 180, 0.3);
 }
 
+.buttons{ 
+    margin: auto;
+    width: 80%;
+}
+
 button{
-    margin-top: 100px;
+    margin-top: 70px;
     padding: 10px 5px 10px 5px;
     background-color: rgb(199, 3, 180, 0.3);
     border: none;

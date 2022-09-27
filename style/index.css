@@ -40,7 +40,8 @@ p{
 }
 
 .pagination{
-    background-color: rgb(111, 71, 147);
+    display: flex;
+    justify-content: center;
 }
 
 

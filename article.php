@@ -13,7 +13,6 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
     if($check_article){
         var_dump($_GET['id']);
-        var_dump($_SESSION['id_users']);
 
         $data_article = $get_article->fetch();
         $titre = $data_article['titre'];
@@ -24,6 +23,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                
 if(isset($_POST['valider'])){
     if(isset($_SESSION['role']) && !empty($_SESSION['role'])){
+        var_dump($_SESSION['id_users']);
         $comment = htmlspecialchars($_POST['comment']);
 
         if(!empty($_POST['comment'])){
@@ -81,9 +81,11 @@ if(isset($_POST['valider'])){
 
     <div class="container-comment">
         <form action="" method="POST" id="comment">
-     <!-- ?id=<?= $_GET['id']; ?>&task=write -->
+
+ 
             <p>Laisser un commentaire :</p>
             <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Votre commentaire ici..."></textarea>
+            <!-- <input type="hidden" name="author" id="author" value="<?=$_SESSION['id_users']; ?>"> -->
             <div class="button">
                 <input type="submit" name="valider" id= "button">
             </div>           
@@ -108,7 +110,7 @@ if(isset($_POST['valider'])){
         var_dump($_GET['id']);
             ?> 
                 
-
-        <script src="script/commentaires.js"></script>
+        
+        <!-- <script src="script/commentaires.js"></script> -->
 </body>
 </html>
