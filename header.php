@@ -3,9 +3,6 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
-
-
-
 ?>
 
 
@@ -40,22 +37,26 @@ if(!isset($_SESSION))
             </li>           
                 <?php
                 if(isset($_SESSION['role']) && !empty($_SESSION['role'])){
-                    if($_SESSION['role']=== "admin"){
+                if($_SESSION['role'] === "admin"){
                 ?>
                     <li>
                         <a href="admin.php">Administration</a>
                     </li>
+               <?php
+                }
+                    if ($_SESSION['role'] === "user" || $_SESSION['role'] === "admin"){
+               ?> 
                     <li id="suscribe">
                         Salut <?= ucfirst($_SESSION['prenom']); ?> ! / <a href="deconnexion.php">Me déconnecter</a>
                     </li>
                 <?php
-                }
                 }else{
                 ?>                  
                     <li id="suscribe">
                         <a href="inscription-connexion.php">Inscription/Connexion</a>
                     </li>
                 <?php
+                }
                 }
                 ?>
         </ul>
@@ -64,6 +65,8 @@ if(!isset($_SESSION))
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
             </svg>
         </div>
+
+        <!-- Barre de menu inscritpion/connexion non responsive -->
         <div class="inscritpion">
             <p id="log">
                 <?php
@@ -78,8 +81,6 @@ if(!isset($_SESSION))
                 <?php
                 }
                 ?>
-                
-                
             </p> 
          </div> 
    </nav> 
