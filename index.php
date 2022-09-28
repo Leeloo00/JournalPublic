@@ -3,6 +3,8 @@ session_start();
 require "header.php";
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
 
+var_dump($_SESSION['role']);
+
 $articleparpage = 4;
 $articlestotalsreq = $bdd->query('SELECT id_publication FROM publication');
 $articlestotal = $articlestotalsreq->rowCount();

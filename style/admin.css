@@ -38,6 +38,30 @@ input{
     height: 40px;
 }
 
+.row{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+table{
+    background-color: rgb(10, 10, 10);
+    border: 2px solid black;
+    color: white;
+}
+
+td{
+    width: 200px; 
+    padding: 10px;
+    background-color: rgb(247, 207, 247);
+    color: black;
+}
+
+td a::hoover{
+    color:rgb(92, 4, 83)
+}
+
+
+
 
 @media screen and (max-width: 1040px){
 

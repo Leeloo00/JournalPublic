@@ -47,7 +47,7 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
                     $insert_publication = $bdd->prepare('INSERT INTO publication(titre, photo ,content) VALUES(?,?, ?)');
                     $insert_publication->execute([$titre, $newfilename, $content]);
             
-                    $message= 'Votre publication a bien été enregistrée';
+                    $message= 'Votre publication a bien été enregistrée <a href = "index.php">voir</a>';
                 }else{
                     $erreur= 'Veuillez remplir tous les champs';
                 }
@@ -89,23 +89,23 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    <!-- <div class="container">
+        <?php
+            if(isset($erreur)){
+                echo '<font style="color:red">'.$erreur.'</font>';
+            }
+                    
+            if(isset($message)){
+                echo '<font style="color:blue">'.$message.'</font>';
+            }
+        ?>
         <form action="" method='POST' enctype="multipart/form-data">
             <input type="text" name='titre' placeholder="Titre"><br><br>
             <input type="file" name="photo">
             <textarea name="content" id="" cols="30" rows="10" placeholder="Entre votre texte ici ..."></textarea><br><br>
                 <button name='publier'>Publier</button><br><br>
-            <?php
-                if(isset($erreur)){
-                    echo '<font style="color:red">'.$erreur.'</font>';
-                }
-                    
-                if(isset($message)){
-                    echo '<font style="color:blue">'.$message.'</font>';
-                }
-            ?>
         </form>
-    </div>
+    </div> -->
 
 </body>
 </html>
