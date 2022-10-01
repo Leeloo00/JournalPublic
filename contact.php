@@ -58,14 +58,6 @@ if(isset($_POST['envoyer'])){
 
             <div class="section">
                 <p>Ou tout simplement remplir ce formulaire de contact :</p>
-                <form action="" method="POST">
-                    <input type="text" placeholder="Nom" name="nom"><br><br>
-                    <input type="text" placeholder="Prénom" name="prenom"><br><br>
-                    <input type="email" placeholder="Email" name="mail"><br><br>
-                    <textarea name="content" id="" cols="30" rows="10" placeholder="Votre texte ici..."></textarea><br><br>
-                    <input type="submit" value='Envoyer' name="envoyer">
-                </form>
-
                 <?php
                 if(isset($erreur)){
                     echo '<font style="color:red">'.$erreur.'</font>';
@@ -75,7 +67,14 @@ if(isset($_POST['envoyer'])){
                     echo '<font style="color:blue">'.$message.'</font>';
                 }
                 ?>
-                <br><br>  
+                <br>
+                <form action="" method="POST">
+                    <input type="text" placeholder="Nom" name="nom"><br><br>
+                    <input type="text" placeholder="Prénom" name="prenom"><br><br>
+                    <input type="email" placeholder="Email" name="mail"><br><br>
+                    <textarea name="content" id="" cols="30" rows="10" placeholder="Votre texte ici..."></textarea><br><br>
+                    <button type="submit" value='Envoyer' name="envoyer">Envoyer</button>
+                </form>
 
             </div>
 

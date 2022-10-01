@@ -97,7 +97,7 @@ if(isset($_POST['connexion'])){
     <link rel="stylesheet" href="style/inscription-connexion.css">
     <title>Inscription/Connexion</title>
 </head>
-<body>
+<body>  
     <div class="container">
         <div class="buttons">
             <button id='login'>Inscription</button>

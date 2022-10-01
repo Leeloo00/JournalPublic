@@ -11,7 +11,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     if($delete){
         $delete = $bdd->prepare('DELETE FROM users WHERE id_users = ?');
         $delete->execute([$get_id]);
-        header ('Location: admin.php');
+        header ('Location: users-view.php');
 
     } else{
         echo 'Cette utilisateur n\'existe pas';

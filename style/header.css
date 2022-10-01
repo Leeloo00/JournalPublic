@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'ibm_plex_monoregular';
     src: url('ibm/ibm-plex-mono.regular-webfont.woff2') format('woff2'),
@@ -15,24 +14,45 @@
     border: 0;
 }
 body{
-    background-color: rgb(254, 224, 179) ;
+    background-color: rgb(254, 224, 179);
     font-family: 'ibm_plex_monoregular';
+}
+
+.image-fond{
+    /* Fixe l'image en haut à gauche de la page */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Préserve le ratio de l'image */
+    min-width: 100%;
+    min-height: 100%;
 }
 
 nav{
     display : flex;
-    background-color:rgba(199, 3, 179, 0);
-    justify-content: center;
-    /* position: fixed; */  
+    justify-content: center; 
     position: fixed;
     top: 0;
     width: 100vw;
     flex-wrap: wrap;
-    /* margin-top: -150px; */
+    z-index: 1000;
 }
 
-ul{
+button{
+    padding: 10px 5px 10px 5px;
+    background-color: rgb(123, 237, 122);
+    border: 1.5px solid rgb(38, 46, 109);
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'ibm_plex_monoregular';
+    color: rgb(38, 46, 109);
+}
+
+#menu{
     display : flex;
+    justify-content: center;
+    background-color: rgba(199, 3, 179, 0.564); 
+    width:200%;
 }
 
 li{
@@ -45,22 +65,21 @@ li{
 }
 
 
-
 a{
     color: rgb(74, 0, 59); 
     text-decoration: none;
 }
 
 a:hover{
-    color: white;
+    color: rgb(253, 35, 242);
 }
 
 #nav {
     width: 100%;
     font-size: 60px;
     font-weight: bold;
-    background-color:  rgba(199, 3, 179, 0);
-    border-bottom: 3px solid rgba(54, 217, 54, 0.007);
+    background-color:  rgba(199, 3, 179, 0.564);
+    border-bottom: 5px solid rgb(54, 217, 54);
     display: flex;
     justify-content: center;
 }
@@ -69,10 +88,14 @@ a:hover{
     color: rgb(54, 217, 54);
 }
 
+li a:hover{
+    color: rgb(54, 217, 54);
+}
+
+
 .inscritpion{
-    background-color:  rgba(114, 199, 3, 0);
+    margin-right: 10px;
     width: 100%;
-    padding-right: 10px;
 }
 
 #log{
@@ -83,7 +106,7 @@ a:hover{
     font-size: 16px;
     text-decoration: underline;
     width: 100%;
-    background-color:rgba(10, 199, 3, 0.933) ;
+    /* background-color:rgba(10, 199, 3, 0.933) ; */
     padding-right: 20px;
 }
 
@@ -92,7 +115,7 @@ a:hover{
 }
 
 #suscribe{
-    display: none
+    display: none;
 }
 
 #open{
@@ -115,6 +138,7 @@ a:hover{
     #nav{
         font-size: 20px;
     }
+
 
     li{
         font-size: 15px;

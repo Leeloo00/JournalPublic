@@ -15,15 +15,7 @@
     justify-content: center;
 }
 
-button{
-    padding: 10px 5px 10px 5px;
-    background-color: rgb(123, 237, 122);
-    border: 1.5px solid rgb(38, 46, 109);
-    margin-left: 10px;
-    margin-right: 10px;
-    font-family: 'ibm_plex_monoregular';
-    color: rgb(38, 46, 109);
-}
+
 
 #publication{
     width: 30%;

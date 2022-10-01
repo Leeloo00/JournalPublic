@@ -3,7 +3,7 @@ session_start();
 require "header.php";
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
 
-var_dump($_SESSION['role']);
+// var_dump($_SESSION['role']);
 
 $articleparpage = 4;
 $articlestotalsreq = $bdd->query('SELECT id_publication FROM publication');
@@ -30,9 +30,10 @@ echo $depart;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index.css">
-    <title>Journal</title>
+    <title>Liste d'articles</title>
 </head>
-<body>
+<body> 
+    <img src="img/palmier1.jpg" class="image-fond" width="100%" alt="">
     <div class="container">
         <?php
         $get_article = $bdd->query('SELECT * FROM publication ORDER BY id_publication DESC LIMIT '.$depart.','.$articleparpage);
@@ -70,19 +71,19 @@ echo $depart;
             <?php
             }
             // var_dump($_SESSION['role']);
-            ?>       
-    </div>
-    <div class="pagination">
-        <?php
-            for($i=1;$i<=$pagesTotales;$i++) {
-                if($i == $pagecourante) {
-                    echo $i.' ';
-                } else {
-                    echo '<a id=pagination" href="index.php?page='.$i.'">'.$i.'</a> ';
+            ?>
+            
+        <div class="pagination">
+            <?php
+                for($i=1;$i<=$pagesTotales;$i++) {
+                    if($i == $pagecourante) {
+                        echo $i.'-';
+                    } else {
+                        echo '<a id=pagination" href="index.php?page='.$i.'">'.$i.'</a>- ';
+                    }
                 }
-            }
-        ?>
-
+            ?>
+        </div>       
     </div>
   
 </body>

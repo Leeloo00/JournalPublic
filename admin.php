@@ -101,7 +101,6 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/admin.css">
-    <link rel="stylesheet" href="style/publication.css">
     <title>Administration</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> -->
 </head>
@@ -125,22 +124,23 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
     <?php
     if(isset($_POST['publication'])){
 
-        // header('Location: publication.php');
+        header('Location: publication.php');
         
    
         ?>
-        <div class="container">
+        <!-- <div class="container">
             <form action="" method='POST' enctype="multipart/form-data">
                 <input type="text" name='titre' placeholder="Titre"><br><br>
                 <input type="file" name="photo">
                 <textarea name="content" id="" cols="30" rows="10" placeholder="Entre votre texte ici ..."></textarea><br><br>
                     <button name='publier'>Publier</button><br><br>
             </form>
-        </div>
+        </div> -->
 
 
         <?php
-             }elseif (isset($_POST['users-view'])) {            
+             }elseif (isset($_POST['users-view'])) {  
+                header('Location: users-view.php');          
         ?>
         <div class="row">
             <table class="table">

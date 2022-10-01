@@ -55,6 +55,9 @@ if(isset($_POST['valider'])){
     <title><?= $data_article['titre'];?></title>
 </head>
 <body>
+   
+
+    <div class="total-container">
             <div class="comment-result">                   
                 <?php
                 if(isset($erreur)){
@@ -104,6 +107,7 @@ if(isset($_POST['valider'])){
                 <div class="author" style="text-decoration: underline"><?= $comment['prenom']; ?></div>
                 <div class="content"><?= $comment['comment']; ?></div>
             </div>
+    </div>
     </div>
         <?php
         }

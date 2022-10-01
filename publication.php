@@ -86,10 +86,25 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/publication.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style/admin.css">
+    <title>Publier un article</title>
 </head>
 <body>
-    <!-- <div class="container">
+    <div class="container-commande">
+        <form action="" method="POST">  
+            <button>
+                <a href="admin.php">
+                  <- Retour menu
+                </a>
+            </button>
+            <button name="users-view">
+                <a href="users-view.php">
+                    Voir mes Utilisateurs
+                </a>               
+            </button>
+        </form>  
+    </div>
+    <div class="container">
         <?php
             if(isset($erreur)){
                 echo '<font style="color:red">'.$erreur.'</font>';
@@ -105,7 +120,7 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
             <textarea name="content" id="" cols="30" rows="10" placeholder="Entre votre texte ici ..."></textarea><br><br>
                 <button name='publier'>Publier</button><br><br>
         </form>
-    </div> -->
+    </div>
 
 </body>
 </html>
