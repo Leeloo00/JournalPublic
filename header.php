@@ -3,6 +3,8 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
+$lu = 
+$number_unread = $bdd->prepare('SELECT lu FROM contact WHERE lu = 0');
 ?>
 
 
