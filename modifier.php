@@ -7,16 +7,22 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $get_id = ($_GET['id']);
     $get_data = $bdd->prepare('SELECT * FROM publication WHERE id_publication = ?');
     $get_data->execute([$get_id]);
+
+    // Retourne les lignes correspondantes
     $check_article = $get_data->rowCount();
 
     if($check_article){
+        // Je fais un fetch sur ma requête pour récupérer mes données dans une variable correspondante
         $article_data = $get_data->fetch();
         $titre = $article_data['titre'];
         $content = $article_data['content'];
+        
 
-        if(isset($_POST['publier'])){
-            $titre = ($_POST['titre']);
-            $content = ($_POST['content']);
+        if(isset($_POST['modifier'])){
+            $titre = htmlspecialchars($_POST['titre']);
+            $content = htmlspecialchars($_POST['content']);
+
+            $content = str_replace("", "<br/>", $content);
 
             $change_text = $bdd->prepare('UPDATE publication SET titre = ?, content = ? WHERE id_publication = ?');
             $change_text->execute([$titre, $content, $get_id]);
@@ -64,8 +70,6 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     // }
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +79,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/publication.css">
+    <link rel="stylesheet" href="style/modifier.css">
     <title>Document</title>
 </head>
 <body>
@@ -83,7 +88,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             <input type="text" name='titre' placeholder="Titre" value='<?= $article_data['titre']; ?>'><br><br>
             <input type="file" name="photo" value='<?= $article_data['photo']; ?>'>
             <textarea name="content" id="" cols="30" rows="10" placeholder="Entre votre texte ici ..."><?= $article_data['content']; ?></textarea><br><br>
-                <button name='publier'>Publier</button><br><br>
+                <button name='modifier'> Modifier </button><br><br>
             <?php
                 if(isset($erreur)){
                     echo '<font style="color:red">'.$erreur.'</font>';

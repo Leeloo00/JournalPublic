@@ -12,11 +12,12 @@ require_once "header.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/admin.css">
+    <link rel="stylesheet" href="style/user-view.css">
     <title>Mes utilisateurs</title>
 </head>
 <body> 
     <div class="container-commande">
-        <form action="" method="POST">
+        <!-- <form action="" method="POST">
             <button>
                 <a href="admin.php">
                     <- Retour menu 
@@ -26,7 +27,7 @@ require_once "header.php";
                 <a href="publication.php">
                     Publier un article
                 </a>
-            </button>
+            </button> -->
     </div>       
     <div class="row">
             <table class="table">
@@ -49,7 +50,7 @@ require_once "header.php";
                 <tr>
                 <td><?= $user['nom']; ?></td>
                 <td><?= $user['prenom']; ?></td>
-                <td><?= $user['mail']; ?></td>
+                <td><a href="mailto:<?= $user['mail']; ?>"><?= $user['mail']; ?></a></td>
                 <td><a href="delete-user?id=<?= $user['id_users']; ?>"> X </a></td>
                 <!-- <a href="supprimer.php?id=<?=$article['id_publication']; ?>">Supprimer</a> -->
                 </tr>

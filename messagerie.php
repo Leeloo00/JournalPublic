@@ -80,6 +80,7 @@ while($get_message = $get_messages->fetch()){
         }
         ?>
 
-    
+  
+</table>  
 </body>
 </html>

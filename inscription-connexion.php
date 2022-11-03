@@ -10,33 +10,41 @@ if(isset($_POST['inscription'])){
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
     $mail = htmlspecialchars($_POST['mail']);
+    $mail2 = htmlspecialchars($_POST['mail2']);
     $mdp = $_POST['mdp'];
+    $mdp2 = $_POST['mdp2'];
     $role = '';
 
-    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['mdp'])){
+    if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail'])  && !empty($_POST['mail']) && !empty($_POST['mdp'])){
 
-        if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
-          
-            $check = $bdd->prepare('SELECT * FROM users WHERE mail = ?');
-            $check ->execute([$mail]);
-            $check_mail = $check->rowCount();
+        if($mail === $mail2 && $mdp === $mdp2){
 
-            if($check_mail == 0){
+            if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
+            
+                $check = $bdd->prepare('SELECT * FROM users WHERE mail = ?');
+                $check ->execute([$mail]);
+                $check_mail = $check->rowCount();
 
-                $role = "user";
-                $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+                if($check_mail == 0){
 
-                $insert_user = $bdd->prepare("INSERT INTO users(nom, prenom, mail, mdp, role) VALUES (?, ?, ?, ?, ?)");
-                $insert_user->execute([$nom, $prenom, $mail, $mdp, $role]);
+                    $role = "user";
+                    $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+                    var_dump($mdp);
+                    var_dump($_POST['mdp']);
+                    $insert_user = $bdd->prepare("INSERT INTO users(nom, prenom, mail, mdp, role) VALUES (?, ?, ?, ?, ?)");
+                    $insert_user->execute([$nom, $prenom, $mail, $mdp, $role]);
 
-                $message = "Votre compte a bien été crée";
+                    $message = "Votre compte a bien été crée";
+
+                }else{
+                    $erreur = "Utilisateur connu, veuillez vous connecter";
+                }
 
             }else{
-                $erreur = "Utilisateur connu, veuillez vous connecter";
+                $erreur = "Veuillez entrer une adresse valide";
             }
-
         }else{
-            $erreur = "Veuillez entrer une adresse valide";
+            $erreur = "Adresses mail ou mot de passe différents";
         }            
     }else{
         $erreur = "Veuillez remplir tous les champs";
@@ -54,6 +62,8 @@ if(isset($_POST['connexion'])){
         $user_verif->execute([$mail]);
         $check_user = $user_verif->fetch();
 
+        var_dump($check_user);
+
         if($check_user){
 
             $passwordHash = $check_user['mdp'];
@@ -70,7 +80,7 @@ if(isset($_POST['connexion'])){
                     header ('Location: index.php');
 
                 }elseif($check_user['role'] == 'admin'){
-                    header('Location: admin.php');
+                    header('Location: publication.php');
                 }
             }else{
                 $erreur = "Problème de mot de passe";
@@ -108,7 +118,9 @@ if(isset($_POST['connexion'])){
                 <input type="text" placeholder="Nom" name="nom"><br><br>
                 <input type="text" placeholder="Prénom" name="prenom"><br><br>
                 <input type="mail" placeholder="Adresse mail" name="mail"><br><br>
-                <input type="password" placeholder="Mot de passe" name="mdp">
+                <input type="mail" placeholder="Confirmation adresse mail" name="mail2"><br><br>
+                <input type="password" placeholder="Mot de passe" name="mdp"><br><br>
+                <input type="password" placeholder="Mot de passe" name="mdp2">
                 <br><br>
                 <input type="submit" name="inscription" value="S'inscrire"> 
             </form>
@@ -119,8 +131,6 @@ if(isset($_POST['connexion'])){
                 <br><br>
                 <input type="submit" name="connexion" value="Se connecter"> 
             </form><br><br>
-                <p>Mot de passe oublié, cliquez<a href="forgotmdp.php"> ici</a></p>
-            <br>
         <?php
         if(isset($erreur)){
             echo '<font style="color:red">'.$erreur.'</font>';
@@ -130,6 +140,8 @@ if(isset($_POST['connexion'])){
             echo '<font style="color:blue">'.$message.'</font>';
         }
         ?>
+                <!-- <p>Mot de passe oublié, cliquez<a href="forgotmdp.php"> ici</a></p> -->
+            <br>
         <br><br>  
     </div>
     

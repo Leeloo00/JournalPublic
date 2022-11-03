@@ -16,9 +16,9 @@ if(isset($_GET['id']) && !empty($_GET['id']) || isset($_GET['id_contact']) && !e
     $message_read->execute([$message['id_contact']]);
 }
 
-$get_messages = $bdd->prepare('SELECT * FROM contact WHERE id_contact = ?');
-$get_messages->execute([$get_id]);
-while($get_message = $get_messages->fetch()){
+// $get_messages = $bdd->prepare('SELECT * FROM contact WHERE id_contact = ?');
+// $get_messages->execute([$get_id]);
+// while($get_message = $get_messages->fetch()){
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ while($get_message = $get_messages->fetch()){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/message.css">
-    <title>Message de <?= $get_message['prenom']; ?> <?= $get_message['nom']; ?></title>
+    <title>Message de <?= $message['prenom']; ?> <?= $message['nom']; ?></title>
 </head>
 <body>
 <?php
@@ -38,17 +38,17 @@ while($get_message = $get_messages->fetch()){
         <div class="content-message">
             <div class="nom">
                 <p>
-                    De : <?= $get_message['nom']; ?> <?= $get_message['prenom']; ?>
+                    De : <?= $message['nom']; ?> <?= $message['prenom']; ?>
                 </p>
             </div>
             <div class="mail">
                 <p>
-                    Adresse : <?= $get_message['mail']; ?>
+                    Adresse : <?= $message['mail']; ?>
                 </p>
             </div>
             <div class="contenu">
                 <p>
-                    Contenu : <?= $get_message['content']; ?>
+                    Contenu : <?= $message['content']; ?>
                 </p>
             </div>
         </div>
@@ -57,9 +57,5 @@ while($get_message = $get_messages->fetch()){
             </button>
     </div>
 
-    <?php
-        }
-        ?>
-    
 </body>
 </html>

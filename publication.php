@@ -8,12 +8,17 @@ require_once "header.php";
 // var_dump($_FILES);
 
 
-
-if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])=== 0){
+// Je verifie que le fichier avec l'index photo existe et qu'il n'y a pas d'erreur
+if(isset($_POST['publier'])){
+    if(($_FILES['photo']) && ($_FILES['photo']['error'])=== 0){
+// L'image a été recue
+    var_dump($_FILES);
 
     $titre = htmlspecialchars($_POST['titre']);
     $content= htmlspecialchars($_POST['content']);
 
+
+//On vérifie l'extension et les types mimes avec un tableau clé =>valeur
     $allowed =[
         "jpg" => "photo/jpg",
         "jpeg" => "photo/jpeg",
@@ -21,28 +26,41 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
         "jfif" => "photo/jfif"
     ];
 
+
+// On récupère le nom original du fichier, le type, et la taille
     $filename = $_FILES["photo"]["name"];
     $filetype = $_FILES["photo"]["type"];
     $filesize = $_FILES["photo"]["size"];
 
+// Vérifier l'extension et le type mime avec la fonction pathinfo, il récupère l'extension grâce à pathinfo_extension
     $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
-    if(!array_key_exists($extension, $allowed) || !in_array($filetype, $allowed)){
 
+// On vérifie l'existence de l'extension dans les clés de allowed ou l'existence du type MINE dans les valeurs
+    if(array_key_exists($extension, $allowed) || in_array($filetype, $allowed)){
+
+// On limite à 1 Mega octet
         if($filesize < 1024 * 1024){
 
+            // On crée un dossier photos
+            // On génère un nom unique
             $newname = md5(uniqid());
-
+            // On génère le chemin complet
             $newfilename = "photos/$newname.$extension";
 
             var_dump($newfilename);
             var_dump($_FILES);
 
+
+            // Je dois prendre le fichier tmp name et le mettre dans mon dossIer photos sous son nouveau nom
             if(move_uploaded_file($_FILES["photo"]["tmp_name"], $newfilename)){
 
+                // Une fois que j'ai enregistré mon fichier je le protège avec changement de mode: lecture et écriture pour le propriétaire, lecture pour les autres
                 chmod($newfilename, 0644);
 
                 if(!empty($_POST['titre']) && !empty($_POST['content'])){
+
+                    $content = str_replace("\n", "<br/>", $content);
             
                     $insert_publication = $bdd->prepare('INSERT INTO publication(titre, photo ,content) VALUES(?,?, ?)');
                     $insert_publication->execute([$titre, $newfilename, $content]);
@@ -64,15 +82,9 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
         $erreur = "Format de fichier incorrect";
     }
 
-    // if(!empty($_POST['titre']) && !empty($_POST['content'])){
-
-    //     $insert_publication = $bdd->prepare('INSERT INTO publication(titre, content) VALUES(?,?)');
-    //     $insert_publication->execute([$titre, $content]);
-
-    //     $message= 'Votre publication a bien été enregistrée';
-    // }else{
-    //     $erreur= 'Veuillez remplir tous les champs';
-    // }
+}else{
+    $erreur = "Veuillez ajouter une photo";
+}
 }
 
 
@@ -91,7 +103,7 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
 </head>
 <body>
     <div class="container-commande">
-        <form action="" method="POST">  
+        <!-- <form action="" method="POST">  
             <button>
                 <a href="admin.php">
                   <- Retour menu
@@ -102,7 +114,7 @@ if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])
                     Voir mes Utilisateurs
                 </a>               
             </button>
-        </form>  
+        </form>   -->
     </div>
     <div class="container">
         <?php

@@ -7,15 +7,16 @@ if(isset($_POST['envoyer'])){
 
     echo 'ok';
 
-    $nom = ($_POST['nom']);
-    $prenom = ($_POST['prenom']);
-    $mail = ($_POST['mail']);
-    $content = ($_POST['content']);
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $mail = htmlspecialchars($_POST['mail']);
+    $content = htmlspecialchars($_POST['content']);
+    $lu = 0;
 
     if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['content'])){
 
-        $insert_contact = $bdd->prepare('INSERT INTO contact(nom, prenom, mail,content) VALUES (?,?,?,?)');
-        $insert_contact->execute([$nom, $prenom, $mail, $content]);
+        $insert_contact = $bdd->prepare('INSERT INTO contact(nom, prenom, mail, content, lu) VALUES(?,?,?,?,?)');
+        $insert_contact->execute([$nom, $prenom, $mail, $content, $lu]);
 
         $message = "Votre message a bien été prise en compte";
         
@@ -72,16 +73,11 @@ if(isset($_POST['envoyer'])){
                     <input type="text" placeholder="Nom" name="nom"><br><br>
                     <input type="text" placeholder="Prénom" name="prenom"><br><br>
                     <input type="email" placeholder="Email" name="mail"><br><br>
-                    <textarea name="content" id="" cols="30" rows="10" placeholder="Votre texte ici..."></textarea><br><br>
+                    <textarea id="" cols="30" rows="10" placeholder="Votre texte ici..." name="content"></textarea><br><br>
                     <button type="submit" value='Envoyer' name="envoyer">Envoyer</button>
                 </form>
-
             </div>
-
-
         </div>
-
-
     </div>
 </body>
 </html>

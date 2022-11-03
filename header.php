@@ -3,8 +3,7 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
-$lu = 
-$number_unread = $bdd->prepare('SELECT lu FROM contact WHERE lu = 0');
+
 ?>
 
 
@@ -42,10 +41,13 @@ $number_unread = $bdd->prepare('SELECT lu FROM contact WHERE lu = 0');
                 if($_SESSION['role'] === "admin"){
                 ?>
                     <li>
-                        <a href="admin.php">Administration</a>
+                        <a href="messagerie.php">Messagerie</a>
                     </li>
                     <li>
-                        <a href="messagerie.php">Messagerie</a>
+                        <a href="publication.php">Publier</a>
+                    </li>
+                    <li>
+                        <a href="users-view.php">Mes Utilisateurs</a>
                     </li>
                <?php
                 }

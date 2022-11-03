@@ -1,0 +1,19 @@
+
+@media screen and (max-width: 900px){
+
+    h1{
+        font-size: 15px;
+    }
+    
+    td{
+        width: 50px; 
+        padding: 2px;
+        background-color: rgb(247, 207, 247);
+        color: black;
+    }
+
+    table{
+        font-size: 12px;
+    }
+    
+}

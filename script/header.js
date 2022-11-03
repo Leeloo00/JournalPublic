@@ -1,7 +1,6 @@
-
+// var close = document.getElementById('close');
 
 var open = document.getElementById('open');
-// var close = document.getElementById('close');
 var menu = document.getElementById('menu');
 
 open.addEventListener('click',

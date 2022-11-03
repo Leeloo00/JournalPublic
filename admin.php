@@ -35,61 +35,61 @@ if(isset($_SESSION['role']) && !empty($_SESSION['role']) && $_SESSION['role'] ==
 //         $erreur= 'Veuillez remplir tous les champs';
 //     }
 // }
-if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])=== 0){
+// if(isset($_POST['publier']) && ($_FILES['photo']) && ($_FILES['photo']['error'])=== 0){
 
-    $titre = htmlspecialchars($_POST['titre']);
-    $content= htmlspecialchars($_POST['content']);
+//     $titre = htmlspecialchars($_POST['titre']);
+//     $content= htmlspecialchars($_POST['content']);
 
-    $allowed =[
-        "jpg" => "photo/jpg",
-        "jpeg" => "photo/jpeg",
-        "png" => "photo/png",
-        "jfif" => "photo/jfif"
-    ];
+//     $allowed =[
+//         "jpg" => "photo/jpg",
+//         "jpeg" => "photo/jpeg",
+//         "png" => "photo/png",
+//         "jfif" => "photo/jfif"
+//     ];
 
-    $filename = $_FILES["photo"]["name"];
-    $filetype = $_FILES["photo"]["type"];
-    $filesize = $_FILES["photo"]["size"];
+//     $filename = $_FILES["photo"]["name"];
+//     $filetype = $_FILES["photo"]["type"];
+//     $filesize = $_FILES["photo"]["size"];
 
-    $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+//     $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
-    if(!array_key_exists($extension, $allowed) || !in_array($filetype, $allowed)){
+//     if(!array_key_exists($extension, $allowed) || !in_array($filetype, $allowed)){
 
-        if($filesize < 1024 * 1024){
+//         if($filesize < 1024 * 1024){
 
-            $newname = md5(uniqid());
+//             $newname = md5(uniqid());
 
-            $newfilename = "photos/$newname.$extension";
+//             $newfilename = "photos/$newname.$extension";
 
-            var_dump($newfilename);
-            var_dump($_FILES);
+//             var_dump($newfilename);
+//             var_dump($_FILES);
 
-            if(move_uploaded_file($_FILES["photo"]["tmp_name"], $newfilename)){
+//             if(move_uploaded_file($_FILES["photo"]["tmp_name"], $newfilename)){
 
-                chmod($newfilename, 0644);
+//                 chmod($newfilename, 0644);
 
-                if(!empty($_POST['titre']) && !empty($_POST['content'])){
+//                 if(!empty($_POST['titre']) && !empty($_POST['content'])){
             
-                    $insert_publication = $bdd->prepare('INSERT INTO publication(titre, photo ,content) VALUES(?,?, ?)');
-                    $insert_publication->execute([$titre, $newfilename, $content]);
+//                     $insert_publication = $bdd->prepare('INSERT INTO publication(titre, photo ,content) VALUES(?,?, ?)');
+//                     $insert_publication->execute([$titre, $newfilename, $content]);
             
-                    $message= 'Votre publication a bien été enregistrée <a href = "index.php">voir</a>';
-                }else{
-                    $erreur= 'Veuillez remplir tous les champs';
-                }
+//                     $message= 'Votre publication a bien été enregistrée <a href = "index.php">voir</a>';
+//                 }else{
+//                     $erreur= 'Veuillez remplir tous les champs';
+//                 }
 
 
-            }else{
-                $erreur = "L'upload a échoué";
-            }
+//             }else{
+//                 $erreur = "L'upload a échoué";
+//             }
 
-        }else{
-            $erreur = "fichier trop volumineux";
-        }
-    }else{
-        $erreur = "Format de fichier incorrect";
-    }
-}
+//         }else{
+//             $erreur = "fichier trop volumineux";
+//         }
+//     }else{
+//         $erreur = "Format de fichier incorrect";
+//     }
+// }
 
 ?>
 

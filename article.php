@@ -22,7 +22,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
                
 if(isset($_POST['valider'])){
-    if(isset($_SESSION['role']) && !empty($_SESSION['role'])){
+    if(isset($_SESSION['id_users']) && !empty($_SESSION['id_users'])){
         var_dump($_SESSION['id_users']);
         $comment = htmlspecialchars($_POST['comment']);
 
@@ -32,7 +32,7 @@ if(isset($_POST['valider'])){
             $query->execute([$_GET['id'], $_SESSION['id_users'], $comment]);
 
             $message = 'Votre commentaire à bien été publié. Merci pour votre participation';
-
+            
         }else{
             $erreur = 'Il n\'y a pas de commentaire à envoyer';
         }
@@ -104,7 +104,7 @@ if(isset($_POST['valider'])){
                         <div class="date"><?= date("d/m/Y à H:i", strtotime($comment['created_at'])); ?></div>
                     </li>
                 </ul>
-                <div class="author" style="text-decoration: underline"><?= $comment['prenom']; ?></div>
+                <div class="author" style="text-decoration: underline"><?= ucfirst($comment['prenom']); ?></div>
                 <div class="content"><?= $comment['comment']; ?></div>
             </div>
     </div>

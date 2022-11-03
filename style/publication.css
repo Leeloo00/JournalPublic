@@ -1,5 +1,5 @@
 .container{
-    width: 80%;
+    width: 50%;
     margin: auto;
     margin-top: 20px;
 }
@@ -8,6 +8,7 @@ textarea,input {
     width: 100%;
     height: 300px;  
     margin: auto;
+    white-space: pre-line;
 }
 
 input{
@@ -15,7 +16,7 @@ input{
 }
 
 
-@media screen and (max-width: 1040px){
+@media screen and (max-width: 800px){
     .container{
         width: 90%;
     }
