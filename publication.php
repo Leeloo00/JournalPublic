@@ -10,6 +10,8 @@ require_once "header.php";
 
 // Je verifie que le fichier avec l'index photo existe et qu'il n'y a pas d'erreur
 if(isset($_POST['publier'])){
+
+
     if(($_FILES['photo']) && ($_FILES['photo']['error'])=== 0){
 // L'image a été recue
     var_dump($_FILES);
