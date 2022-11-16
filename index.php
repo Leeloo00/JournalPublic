@@ -1,24 +1,24 @@
 <?php
 session_start();
 require "header.php";
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
+require_once "config/bdd.php";
 
 // var_dump($_SESSION['role']);
 
-// $articleparpage = 4;
-// $articlestotalsreq = $bdd->query('SELECT id_publication FROM publication');
-// $articlestotal = $articlestotalsreq->rowCount();
-// $pagesTotales = ceil($articlestotal/$articleparpage);
+$articleparpage = 4;
+$articlestotalsreq = $bdd->query('SELECT id_publication FROM publication');
+$articlestotal = $articlestotalsreq->rowCount();
+$pagesTotales = ceil($articlestotal/$articleparpage);
 
-// if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $articlestotal){
-//     $_GET['page'] = intval($_GET['page']);
-//     $pagecourante = $_GET['page'];
-// }else{
-//     $pagecourante = 1;
-// }
-// echo $pagecourante;
-// $depart = ($pagecourante-1)*$articleparpage;
-// echo $depart;
+if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0 && $_GET['page'] <= $articlestotal){
+    $_GET['page'] = intval($_GET['page']);
+    $pagecourante = $_GET['page'];
+}else{
+    $pagecourante = 1;
+}
+echo $pagecourante;
+$depart = ($pagecourante-1)*$articleparpage;
+echo $depart;
 ?>
 
 
@@ -30,14 +30,13 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index.css">
-    <title>Liste d'articles</title>
+    <title>Journal d'une sauvage | Liste d'articles</title>
 </head>
 <body> 
-    <img src="img/palmier1.jpg" class="image-fond" width="100%" height="100%" alt="">
+    <img src="img/palmier1.jpg" class="image-fond" width="100%" alt="">
     <div class="container">
         <?php
-        $get_article = $bdd->query('SELECT * FROM publication ORDER BY id_publication DESC');
-        // DESC LIMIT '.$depart.','.$articleparpage
+        $get_article = $bdd->query('SELECT * FROM publication ORDER BY id_publication DESC LIMIT '.$depart.','.$articleparpage);
         while($article = $get_article->fetch()){
         ?>
         <div class="container-card">
@@ -74,7 +73,7 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
             // var_dump($_SESSION['role']);
             ?>
             
-        <!-- <div class="pagination">
+        <div class="pagination">
             <?php
                 for($i=1;$i<=$pagesTotales;$i++) {
                     if($i == $pagecourante) {
@@ -84,7 +83,7 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
                     }
                 }
             ?>
-        </div>        -->
+        </div>       
     </div>
   
 </body>

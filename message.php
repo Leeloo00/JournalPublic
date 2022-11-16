@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=journal', 'root', '');
+require_once "config/bdd.php";
 require "header.php";
 
 
